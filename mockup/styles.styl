@@ -1,0 +1,99 @@
+@import 'normalize.css'
+@import url(http://fonts.googleapis.com/css?family=Gudea:400,700)
+
+content-width = 960px
+vertical-page-padding = 64px
+
+a
+	text-decoration none
+	color #00c
+	-webkit-transition color .3s
+	&:visited
+		color #009
+	&:hover
+		color #c00
+	&:active
+		color transparent
+		text-shadow 0 0 2px #00c
+		/*position relative*/
+		/*top 2px*/
+
+body
+	font 14px/1.5 Gudea, 'Helvetica Neue', Helvetica, Arial, sans-serif
+	font-weight 400
+	color #888
+
+.page
+	margin 0 auto
+
+.content
+	max-width content-width
+	margin 0 auto
+	padding 0 3em
+	color #333
+
+.header
+	/*background-color lightyellow*/
+	position relative
+	overflow hidden
+	margin-bottom 3em
+	padding-top vertical-page-padding
+	text-align center
+	h1, h2
+		display none
+
+.portrait
+	border-radius 100px
+
+.credentials
+	margin 1em 0
+
+.social
+	margin 0 0 1em
+	padding 0
+	list-style none
+	li
+		display inline
+		padding 0 .5em
+
+.footer
+	/*background-color: #9cc*/
+	clear both
+	padding 5em 0 vertical-page-padding
+	text-align center
+
+.biography
+	float left
+	width 40%
+	margin-bottom 4em
+	padding 0
+
+.index
+	float right
+	width 55%
+	margin 0
+	padding 0
+	list-style none
+
+@media screen and (max-width: 700px)
+	.biography
+	.index
+		float none
+		width auto
+
+.article
+	font-size 18px
+	margin-bottom 50px
+
+.chapter
+	margin-bottom 1em
+	h3
+		font-weight bold
+		line-height 1
+		margin 0
+	time
+		font-weight bold
+		float right
+	summary
+		clear both
+
