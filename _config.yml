@@ -2,3 +2,4 @@ name: Benjamin Tambourine's Blog
 timezome: Europe/Moscow
 markdown: redcarpet
 pygments: true
+permalink: /:categories/:title

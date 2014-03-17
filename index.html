@@ -9,7 +9,7 @@ title: Benjamin Tambourine
 <ul class="index">
     {% for post in site.posts %}
         <li class="chapter">
-            <time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time>
+            <time datetime="{{ post.date }}">{{ post.date | date: "%B %d, %Y" }}</time>
             <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
             <summary>{{ post.summary }}</summary>
         </li>
