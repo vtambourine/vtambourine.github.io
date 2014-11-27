@@ -1,8 +1,4 @@
 ---
-published: false
----
-
----
 layout: default
 date: 2014-11-24
 category: personal

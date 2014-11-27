@@ -1,5 +1,5 @@
 name: Benjamin Tambourine's Blog
 timezome: Europe/Moscow
 markdown: redcarpet
-pygments: true
+highlighter: pygments
 permalink: /:categories/:title
