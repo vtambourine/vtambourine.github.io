@@ -60,7 +60,7 @@ class Cell {
 			path.arcTo(x + w, y,     x + w, y + w, radius);
 			path.arcTo(x + w, y + w, x,     y + w, radius);
 			path.arcTo(x,     y + w, x,     y,     radius);
-			// path.arcTo(x,     y,     x + w, y,     radius);
+			path.arcTo(x,     y,     x + w, y,     radius);
 			path.arcTo(x + w, y,     x + w, y,     radius);
 		} else if (radius <= w) {
 			path.moveTo(x + w / 2, y + w / 2);
