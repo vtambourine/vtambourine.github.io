@@ -7,13 +7,37 @@ interface LifeParams {
 	width: number,
 }
 
+type Pattern = boolean[][];
+
 const DPR = window.devicePixelRatio;
-const CELL_SIZE = 18;
-const CELL_PADDING = 12;
+const CELL_SIZE = 10;
+const CELL_PADDING = 8;
 const CELL_COLOR = 'hsl(230, 8%, 32%)';
 
-const EVOLUTION_INTERVAL = 900;
+const EVOLUTION_INTERVAL = 600;
 const FPS = 16;
+
+const pattern = (literals: TemplateStringsArray): Pattern => (
+	literals.join('')
+		.split('\n')
+		.map((row : string) => row.trim())
+		.filter((row : string ) => row.length)
+		.map((row : string) =>
+			row.split('').map(char => char === 'O' ? true : false)
+		)
+);
+
+const GLIDER = pattern `
+	........................O...........
+	......................O.O...........
+	............OO......OO............OO
+	...........O...O....OO............OO
+	OO........O.....O...OO..............
+	OO........O...O.OO....O.O...........
+	..........O.....O.......O...........
+	...........O...O....................
+	............OO......................
+`;
 
 class Cell {
 	x: number;
@@ -77,9 +101,12 @@ class Life {
 		private	width: number,
 		private height: number,
 	) {
-		const totalCells = width * height;
+		this.cells = Array(width * height);
+	}
 
-		this.cells = Array(totalCells);
+	randomize() {
+		const { width, height } = this;
+		const totalCells = width * height;
 
 		for (let i = 0; i < totalCells; i++) {
 			const cellX = i % width;
@@ -89,6 +116,35 @@ class Life {
 				cellX,
 				cellY,
 				(proximity < 9) && (Math.random() < 0.5)
+			);
+		}
+	}
+
+	apply(pattern: Pattern, offset = 10) {
+		const { width, height } = this;
+		const totalCells = width * height;
+		const [patterWidth, patternHeight] = [pattern.length, pattern[0].length];
+		const patterThread = [].concat(...pattern);
+		let patternPointer = 0;
+
+		for (let i = 0; i < totalCells; i++) {
+			const cellX = i % width;
+			const cellY = Math.floor(i / width);
+			let liveness: boolean = false;
+
+			if (
+					cellY >= offset &&
+					cellY < offset + patterWidth &&
+					cellX >= (width - patternHeight) / 2 &&
+					cellX < patternHeight + (width - patternHeight) / 2
+			)	{
+				liveness = patterThread[patternPointer++];
+			}
+
+			this.cells[i] = new Cell(
+				cellX,
+				cellY,
+				liveness,
 			);
 		}
 	}
@@ -205,6 +261,8 @@ class LifeRenderer {
 			Math.ceil(width / (CELL_SIZE + CELL_PADDING)),
 			Math.ceil(height / (CELL_SIZE + CELL_PADDING)),
 		);
+
+		life.apply(GLIDER);
 
 		const cx = canvas.getContext('2d');
 		cx.scale(scale, scale);
