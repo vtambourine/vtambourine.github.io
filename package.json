@@ -1,0 +1,12 @@
+{
+  "name": "koal.me",
+  "version": "1.0.0",
+  "repository": "git@github.com:vtambourine/koal.me.git",
+  "author": "Benjamin T <vtambourine@ya.ru>",
+  "main": "index.js",
+  "devDependencies": {
+    "rollup": "^1.1.2",
+    "typescript": "^3.2.4"
+  },
+  "private": true
+}

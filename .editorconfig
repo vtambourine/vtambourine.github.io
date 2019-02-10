@@ -9,6 +9,12 @@ indent_style = tab
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.md]
+[*.json]
+indent_style = space
+
+[*.{md,txt}]
 indent_style = space
 trim_trailing_whitespace = false
+
+[CNAME]
+insert_final_newline = false

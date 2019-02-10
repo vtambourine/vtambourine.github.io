@@ -1,6 +1,5 @@
 # humanstxt.org
-# The humans responsible & technology colophon
 
 # TEAM
 
-	Benjamin T -- Three-dimensional human
+  Benjamin T -- Three-dimensional human
