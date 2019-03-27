@@ -12,7 +12,7 @@ type Pattern = boolean[][];
 const DPR = window.devicePixelRatio;
 const CELL_SIZE = 10;
 const CELL_PADDING = 8;
-const CELL_COLOR = 'hsl(230, 8%, 32%)';
+const CELL_COLOR = 'rgb(75, 189, 211)';
 
 const EVOLUTION_INTERVAL = 600;
 const FPS = 16;
